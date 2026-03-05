@@ -1,7 +1,6 @@
 ## 문제 01 이미지 불러오기 및 그레이스케일 변환
 
-```
-Python
+```Python
 
 import cv2 as cv # OpenCV 라이브러리 임포트
 import numpy as np # 배열 처리를 위한 NumPy 임포트
