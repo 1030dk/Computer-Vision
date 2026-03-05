@@ -2,6 +2,8 @@
 
 ### 1. 주요 개념
 
+![11](https://github.com/user-attachments/assets/7ced5792-ab65-4926-87fd-f9580a90f5a4)
+
 컴퓨터는 이미지를 단순한 그림이 아니라 숫자들의 거대한 격자판(행렬)으로 인식.
 
 • 픽셀(Pixel)과 채널: 이미지는 수많은 점(픽셀)으로 이루어져 있으며, 컬러 이미지는 보통 빨강(R), 초록(G), 파랑(B) 세 가지 색상 정보(채널)를 가짐.
@@ -45,6 +47,8 @@ cv.destroyAllWindows() # 열려있는 모든 창 닫기
 ## 🌀 문제 02 페인팅 붓 크기 조절 기능 추가
 
 ### 1. 주요 개념
+
+<img width="640" height="340" alt="22" src="https://github.com/user-attachments/assets/81a3c021-2c72-4226-978f-98352aa7a19b" />
 
 사용자가 마우스를 움직이거나 클릭할 때 프로그램이 즉각 반응하게 만드는 기술.
 
@@ -116,6 +120,8 @@ cv.destroyAllWindows() # 열려있는 모든 창 닫기
 ## 🌀 문제 03 마우스로 영역 선택 및 ROI(관심영역) 추출
 
 ### 1. 주요 개념
+
+![33](https://github.com/user-attachments/assets/cf1cc68e-6a51-4597-99e0-5a9a105a942f)
 
 전체 이미지 중에서 우리가 집중하고 싶은 특정 부분만을 골라내는 기술.
 
