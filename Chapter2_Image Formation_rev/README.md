@@ -1,6 +1,6 @@
 ## 🌀 문제 01 체크보드 기반 카메라 캘리브레이션
 
-### <mark>1. 주요 개념</mark>
+### 1.주요 개념
 
 카메라 캘리브레이션은 현실 세계의 3D 좌표와 카메라가 찍은 2D 이미지 좌표 사이의 관계를 찾아내어 카메라의 특성을 파악하고 왜곡을 펴는 작업입니다.
 • 체크보드 (Checkerboard)
@@ -131,7 +131,9 @@ if len(images) > 0:
 
 
 ### 4. 실행 결과
-<img width="1288" height="751" alt="01result" src="https://github.com/user-attachments/assets/db773ebc-e4b5-4792-af8f-4c17e6ee9a08" />
+<img width="1277" height="503" alt="11" src="https://github.com/user-attachments/assets/2d1b022f-88b4-4a1b-9cd9-75f508293356" />
+<img width="452" height="102" alt="12" src="https://github.com/user-attachments/assets/346de4ca-4696-4016-b34d-7e0bcd0f655f" />
+
 
 ---
 
@@ -402,7 +404,9 @@ cv2.destroyAllWindows()  # 창 모두 닫기
 시차가 0 이하인 부분(매칭 실패 또는 무한대 거리)을 제외하고, 유효한 픽셀에 대해서만 마스크(valid_mask)를 씌워 깊이 추정 공식($Z = \frac{f \times B}{d}$)을 일괄 적용해 최종 깊이(Depth) 맵을 만듭니다.
 
 ### 4. 실행 결과
-<img width="900" height="555" alt="03result" src="https://github.com/user-attachments/assets/625139a1-da7a-4a9f-9aa2-9fbeb35871bf" />
+![31](https://github.com/user-attachments/assets/a1f19600-fcb9-4147-95fc-01944ec59a08)
+<img width="404" height="117" alt="32" src="https://github.com/user-attachments/assets/eb644eca-a53c-4759-87e5-435fb2aaece4" />
+
 
 
 ---
