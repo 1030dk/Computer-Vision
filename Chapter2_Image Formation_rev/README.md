@@ -124,6 +124,9 @@ if len(images) > 0:
 
 
 ### 3. 핵심 코드
+• cv2.calibrateCamera(objpoints, imgpoints, ...): 체크보드의 실제 3D 좌표와 검출된 2D 이미지 좌표를 이용하여 카메라 파라미터를 계산합니다. 카메라의 내부 행렬(Camera Matrix, 초점거리 및 주점)과 렌즈의 왜곡 계수(Distortion Coefficients)를 한 번에 반환합니다.
+
+• undistorted_img = cv2.undistort(test_img, K, dist, None, newcameramtx): 앞서 구한 카메라 내부 행렬(K)과 왜곡 계수(dist)를 적용하여, 렌즈 굴절 등으로 인해 둥글게 휘어진 원본 이미지의 왜곡을 펴고 보정합니다
 
 
 
@@ -135,6 +138,11 @@ if len(images) > 0:
 ## 🌀 문제 02 이미지 Rotation & Transformation
 
 ### 1. 주요 개념
+• 아핀 변환 (Affine Transformation): 선의 평행성을 유지하면서 이미지를 기하학적으로 변형(회전, 확대/축소, 평행이동)하는 컴퓨터 비전 기법입니다. 연산을 위해 2x3 크기의 변환 행렬을 사용합니다.
+
+• 회전 및 크기 조절 (Rotation & Scaling): 특정 중심점을 기준으로 이미지를 주어진 각도만큼 회전시키고 크기를 비율에 맞게 조절합니다.
+
+• 평행 이동 (Translation): 변환 행렬의 위치 이동 값을 수정하여 이미지를 x축(가로)과 y축(세로) 방향으로 원하는 픽셀만큼 이동시킵니다.
 
 ### 2. 전체 코드
 
@@ -205,6 +213,11 @@ cv2.destroyAllWindows()  # 모든 창 닫기
 
 ### 3. 핵심 코드
 
+• cv2.getRotationMatrix2D(center, angle, scale)`: 회전 중심점(`center`), 회전 각도(`angle`), 크기 조절 비율(`scale`)을 입력받아 2x3 크기의 변환 행렬을 생성합니다. (각도가 양수이면 반시계 방향 회전)
+
+• v2.warpAffine(img, M, dsize): 최종적으로 완성된 아핀 변환 행렬(M)을 원본 이미지(img)에 적용하여 이미지를 변형합니다. dsize는 결과물로 나올 이미지의 크기(너비, 높이)입니다.
+
+
 ### 4. 실행 결과
 ![02result](https://github.com/user-attachments/assets/a5363ac7-c162-4941-b9f6-3800967a577d)
 
@@ -213,6 +226,15 @@ cv2.destroyAllWindows()  # 모든 창 닫기
 ## 🌀 문제 03 Stereo Disparity 기반 Depth 추정
 
 ### 1. 주요 개념
+
+• 스테레오 비전 (Stereo Vision): 사람의 두 눈이 거리를 가늠하는 원리를 모방한 컴퓨터 비전 기법입니다. 약간 떨어진 두 위치에서 촬영된 좌/우 이미지(Left/Right Image)를 비교해 물체의 깊이(거리)를 알아냅니다.
+
+• 시차 (Disparity, $d$): 좌측 이미지와 우측 이미지에서 동일한 물체가 위치한 픽셀 좌표의 차이(이동량)를 의미합니다. 물체가 카메라와 가까울수록 시차가 크게 나타나고, 멀수록 시차가 작게 나타납니다.
+
+• 깊이 (Depth, $Z$) 계산 공식: <img width="86" height="39" alt="image" src="https://github.com/user-attachments/assets/692fe095-a35b-44df-b5a8-e37aadcb98a8" />
+  - $f$: 카메라의 초점 거리 (Focal Length)
+  - $B$: 두 카메라 사이의 물리적 거리 (Baseline)
+  - $d$: 계산된 시차 (Disparity)
 
 ### 2. 전체 코드
 
@@ -369,6 +391,15 @@ cv2.destroyAllWindows()  # 창 모두 닫기
 
 
 ### 3. 핵심 코드
+
+• cv2.StereoBM_create(numDisparities, blockSize): 스테레오 블록 매칭(Block Matching) 알고리즘 객체를 생성합니다. 탐색할 최대 시차 범위(numDisparities)와 매칭에 사용할 블록의 크기(blockSize)를 설정하는 역할을 합니다.
+
+• stereo.compute(left_gray, right_gray): 흑백으로 변환된 좌/우 이미지를 입력하여 시차 맵(Disparity Map)을 계산합니다. 여기서 OpenCV 알고리즘이 반환하는 결과는 원래 값에서 16배 스케일링된 정수형 데이터입니다.
+
+• 실제 Disparity 변환 연산: disparity_int.astype(np.float32) / 16.0: OpenCV가 반환한 16배 스케일링된 정수형 데이터를 실제 시차 값으로 사용하기 위해, 실수형(float32)으로 변환한 뒤 16으로 나누어 원래 수치로 되돌리는 필수 연산입니다.
+
+• Depth 마스킹 및 계산: depth_map[valid_mask] = (f * B) / disparity[valid_mask]
+시차가 0 이하인 부분(매칭 실패 또는 무한대 거리)을 제외하고, 유효한 픽셀에 대해서만 마스크(valid_mask)를 씌워 깊이 추정 공식($Z = \frac{f \times B}{d}$)을 일괄 적용해 최종 깊이(Depth) 맵을 만듭니다.
 
 ### 4. 실행 결과
 <img width="900" height="555" alt="03result" src="https://github.com/user-attachments/assets/625139a1-da7a-4a9f-9aa2-9fbeb35871bf" />
