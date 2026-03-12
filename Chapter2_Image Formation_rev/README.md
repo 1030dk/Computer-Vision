@@ -145,7 +145,7 @@ if len(images) > 0:
 
 ## 🌀 문제 02 이미지 Rotation & Transformation
 
-<img width="32ㅐ" height="320" alt="image" src="https://github.com/user-attachments/assets/80362a77-c9d2-43ba-845d-fc8a7ad4bc87" />
+<img width="320" height="320" alt="image" src="https://github.com/user-attachments/assets/80362a77-c9d2-43ba-845d-fc8a7ad4bc87" />
 
 
 ### 1. 주요 개념
