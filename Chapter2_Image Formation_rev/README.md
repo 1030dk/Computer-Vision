@@ -1,5 +1,7 @@
 ## 🌀 문제 01 체크보드 기반 카메라 캘리브레이션
 
+<img width="320" height="320" alt="image" src="https://github.com/user-attachments/assets/961e0368-c964-4d70-8d0d-d70b7c80b3ce" />
+
 ### 1.주요 개념
 
 카메라 캘리브레이션은 현실 세계의 3D 좌표와 카메라가 찍은 2D 이미지 좌표 사이의 관계를 찾아내어 카메라의 특성을 파악하고 왜곡을 펴는 작업입니다.
@@ -131,13 +133,20 @@ if len(images) > 0:
 
 
 ### 4. 실행 결과
+
 <img width="1277" height="503" alt="11" src="https://github.com/user-attachments/assets/2d1b022f-88b4-4a1b-9cd9-75f508293356" />
+
+<카메라 내부 파라미터 행렬 및 왜곡 계수>
+
 <img width="452" height="102" alt="12" src="https://github.com/user-attachments/assets/346de4ca-4696-4016-b34d-7e0bcd0f655f" />
 
 
 ---
 
 ## 🌀 문제 02 이미지 Rotation & Transformation
+
+<img width="32ㅐ" height="320" alt="image" src="https://github.com/user-attachments/assets/80362a77-c9d2-43ba-845d-fc8a7ad4bc87" />
+
 
 ### 1. 주요 개념
 • 아핀 변환 (Affine Transformation): 선의 평행성을 유지하면서 이미지를 기하학적으로 변형(회전, 확대/축소, 평행이동)하는 컴퓨터 비전 기법입니다. 연산을 위해 2x3 크기의 변환 행렬을 사용합니다.
@@ -226,6 +235,9 @@ cv2.destroyAllWindows()  # 모든 창 닫기
 ---
 
 ## 🌀 문제 03 Stereo Disparity 기반 Depth 추정
+
+<img width="320" height="320" alt="image" src="https://github.com/user-attachments/assets/153a6b4d-f972-4c90-8803-64a5b248ecce" />
+
 
 ### 1. 주요 개념
 
@@ -404,7 +416,11 @@ cv2.destroyAllWindows()  # 창 모두 닫기
 시차가 0 이하인 부분(매칭 실패 또는 무한대 거리)을 제외하고, 유효한 픽셀에 대해서만 마스크(valid_mask)를 씌워 깊이 추정 공식($Z = \frac{f \times B}{d}$)을 일괄 적용해 최종 깊이(Depth) 맵을 만듭니다.
 
 ### 4. 실행 결과
+
 ![31](https://github.com/user-attachments/assets/a1f19600-fcb9-4147-95fc-01944ec59a08)
+
+<가장 가까운 ROI, 가장 먼 ROI>
+
 <img width="404" height="117" alt="32" src="https://github.com/user-attachments/assets/eb644eca-a53c-4759-87e5-435fb2aaece4" />
 
 
