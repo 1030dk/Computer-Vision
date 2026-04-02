@@ -219,7 +219,7 @@ img_array /= 255.0`** :
 ### 4. 실행 결과
 
 
-<img width="853" height="355" alt="result2" src="https://github.com/user-attachments/assets/82912ed4-bf59-4438-afe9-b341be6057f0" />
+<img width="860" height="409" alt="image" src="https://github.com/user-attachments/assets/86d55ed9-a8c9-45e5-9dc8-2d395da8daeb" />
 
 
 ---
