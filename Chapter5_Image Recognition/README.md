@@ -1,6 +1,8 @@
 ## 🌀 문제 01 간단한 이미지 분류기 구현
 
 
+<img width="250" height="200" alt="image" src="https://github.com/user-attachments/assets/997d377a-dee3-4ce2-9f3f-04f8233bfe58" />
+
 
 
 ### 1.주요 개념
@@ -88,6 +90,10 @@ print(f"MNIST 테스트 정확도: {mnist_acc:.4f}\n")
 ---
 
 ## 🌀 문제 02 CIFAR-10 데이터셋을 활용한 CNN 모델 구축
+
+
+
+<img width="250" height="200" alt="image" src="https://github.com/user-attachments/assets/7a9fbbcb-da65-4f5c-88b3-576cfef1cbd6" />
 
 
 
