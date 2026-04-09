@@ -144,7 +144,7 @@ for i in range(1, 5):
 - **`track_bbs_ids = mot_tracker.update(detections)`** : 현재 프레임의 위치 데이터(detections)를 넣어주면, 과거의 데이터와 비교하여 같은 객체임을 증명하는 고유 ID를 붙여서 반환함.
 
 
-- **''**
+
 
 
 
